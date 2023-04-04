@@ -1,6 +1,11 @@
-const InputError = ({ messages = [], className = '' }) => (
+interface Props {
+    messages: any[]
+    className?: string
+}
+
+const InputError = ({ messages = [], className = '' }: Props) => (
     <>
-        {messages.length > 0 && (
+        {messages?.length > 0 && (
             <>
                 {messages.map((message, index) => (
                     <p

@@ -7,11 +7,11 @@ import ResponsiveNavLink, {
 } from '@/components/ResponsiveNavLink'
 import { DropdownButton } from '@/components/DropdownLink'
 import DropdownLink from '@/components/DropdownLink'
-import { useAuth } from '@/hooks/auth'
+import { useAuth, User } from '@/hooks/auth'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-const Navigation = ({ user }) => {
+const Navigation = (user?: User) => {
     const router = useRouter()
 
     const { logout } = useAuth({ middleware: 'auth' })

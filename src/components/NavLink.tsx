@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react'
 import Link, { LinkProps } from 'next/link'
 
-const NavLink = ({ active = false, children, ...props }: LinkProps & { children?: React.ReactNode, active: boolean }) => (
+interface Props extends LinkProps {
+    active: boolean
+}
+
+const NavLink = ({ active = false, children, ...props }: PropsWithChildren<Props>) => (
     <Link
         {...props}
         className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 focus:outline-none transition duration-150 ease-in-out ${active

@@ -1,6 +1,11 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react'
 
-const AuthSessionStatus = ({ status, className, ...props }: HTMLAttributes<HTMLDivElement> & { status?: string | null, className?: string }) => (
+interface Props extends HTMLAttributes<HTMLDivElement> {
+    className?: string
+    status?: string | null
+}
+
+const AuthSessionStatus = ({ status, className, ...props }: Props) => (
     <>
         {status && (
             <div

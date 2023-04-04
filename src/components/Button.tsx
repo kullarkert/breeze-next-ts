@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react'
 
 const Button = ({ type = 'submit', className, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) => (
     <button

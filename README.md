@@ -1,3 +1,17 @@
+# Laravel Breeze - Next.js Edition with TypeScript 🏝️
+
+## Introduction
+
+**This repository is a refactor of [breeze-next](https://github.com/laravel/breeze-next) by changing programing language from [JavaScript](https://www.javascript.com/) to [TypeScript](https://www.typescriptlang.org/)**
+
+
+- [Laravel Breeze](https://laravel.com/docs/starter-kits)
+- [Next.js](https://nextjs.org)
+- [Laravel Sanctum](https://laravel.com/docs/sanctum)
+
+## Official Documentation
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

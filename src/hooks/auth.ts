@@ -16,10 +16,19 @@ interface IApiRequest {
     [key: string]: any
 }
 
+export interface User {
+    id?: number
+    name?: string
+    email?: string
+    email_verified_at?: string
+    created_at?: string
+    updated_at?: string
+}
+
 export const useAuth = ({ middleware, redirectIfAuthenticated }: IUseAuth) => {
     const router = useRouter()
 
-    const { data: user, error, mutate } = useSWR('/api/user', () =>
+    const { data: user, error, mutate } = useSWR<User>('/api/user', () =>
         axios
             .get('/api/user')
             .then(res => res.data)
