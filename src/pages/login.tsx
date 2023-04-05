@@ -10,6 +10,7 @@ import { useAuth } from '@/hooks/auth'
 import { useEffect, useState, FormEventHandler } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import Checkbox from '@/components/Checkbox'
 
 const Login = () => {
     const { query } = useRouter()
@@ -98,17 +99,16 @@ const Login = () => {
                         <label
                             htmlFor="remember_me"
                             className="inline-flex items-center">
-                            <input
+
+                            <Checkbox
                                 id="remember_me"
-                                type="checkbox"
                                 name="remember"
-                                className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                checked={shouldRemember}
                                 onChange={event =>
                                     setShouldRemember(event.target.checked)
                                 }
                             />
-
-                            <span className="ml-2 text-sm text-gray-600">
+                            <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
                                 Remember me
                             </span>
                         </label>
@@ -117,11 +117,11 @@ const Login = () => {
                     <div className="flex items-center justify-end mt-4">
                         <Link
                             href="/forgot-password"
-                            className="underline text-sm text-gray-600 hover:text-gray-900">
+                            className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
                             Forgot your password?
                         </Link>
 
-                        <Button className="ml-3">Login</Button>
+                        <Button className="ml-4">Login</Button>
                     </div>
                 </form>
             </AuthCard>

@@ -2,8 +2,8 @@ import React, { useState, PropsWithChildren } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
 interface Props {
-    align?: string
-    width?: string
+    align?: 'left' | 'right' | 'top'
+    width?: '48'
     contentClasses?: string
     trigger: React.ReactNode
 }
@@ -11,17 +11,11 @@ interface Props {
 const Dropdown = ({
     align = 'right',
     width = '48',
-    contentClasses = 'py-1 bg-white',
+    contentClasses = 'py-1 bg-white dark:bg-gray-700',
     trigger,
     children,
 }: PropsWithChildren<Props>) => {
-    let alignmentClasses: string
-
-    switch (width) {
-        case '48':
-            width = 'w-48'
-            break
-    }
+    let alignmentClasses = ''
 
     switch (align) {
         case 'left':
@@ -34,6 +28,13 @@ const Dropdown = ({
         default:
             alignmentClasses = 'origin-top-right right-0'
             break
+    }
+
+
+    let widthClasses = '';
+
+    if (width === '48') {
+        widthClasses = 'w-48';
     }
 
     const [open, setOpen] = useState(false)
@@ -53,7 +54,7 @@ const Dropdown = ({
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95">
                         <div
-                            className={`absolute z-50 mt-2 ${width} rounded-md shadow-lg ${alignmentClasses}`}>
+                            className={`absolute z-50 mt-2 rounded-md shadow-lg ${alignmentClasses} ${widthClasses}`}>
                             <Menu.Items
                                 className={`rounded-md focus:outline-none ring-1 ring-black ring-opacity-5 ${contentClasses}`}
                                 static>

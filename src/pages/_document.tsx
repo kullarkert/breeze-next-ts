@@ -8,14 +8,15 @@ class MyDocument extends Document {
 
     render() {
         return (
-            <Html>
+            <Html className="dark">
                 <Head>
+					<link rel="preconnect" href="https://fonts.bunny.net"></link>
                     <link
                         href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap"
                         rel="stylesheet"
                     />
                 </Head>
-                <body className="antialiased">
+                <body className="font-sans antialiased">
                     <Main />
                     <NextScript />
                 </body>

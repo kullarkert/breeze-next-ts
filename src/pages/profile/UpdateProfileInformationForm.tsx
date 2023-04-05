@@ -1,3 +1,4 @@
+import { useState, FormEventHandler, useEffect } from 'react'
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
@@ -5,7 +6,7 @@ import Button from '@/components/Button'
 
 import axios, { csrf } from '@/lib/axios'
 import { useAuth } from '@/hooks/auth'
-import { useState, FormEventHandler, useEffect } from 'react'
+import { Transition } from '@headlessui/react'
 
 const UpdateProfileInformationForm = () => {
     const { user } = useAuth({ middleware: 'auth' })
@@ -16,7 +17,7 @@ const UpdateProfileInformationForm = () => {
     const [status, setStatus] = useState(null)
 
     useEffect(() => {
-        if(user !== undefined) {
+        if (user !== undefined) {
             setName(user.name)
             setEmail(user.email)
         }
@@ -43,11 +44,11 @@ const UpdateProfileInformationForm = () => {
     return (
         <section>
             <header>
-                <h2 className="text-lg font-medium text-gray-900">
+                <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
                     Profile Information
                 </h2>
 
-                <p className="mt-1 text-sm text-gray-600">
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                     Update your account's profile information and email address
                 </p>
             </header>
@@ -91,9 +92,14 @@ const UpdateProfileInformationForm = () => {
                     <Button>Save</Button>
 
                     {status === 'profile-updated' && (
-                        <p className="text-sm text-gray-600">
-                            Saved
-                        </p>
+                        <Transition
+                            show={true}
+                            enterFrom="opacity-0"
+                            leaveTo="opacity-0"
+                            className="transition ease-in-out"
+                        >
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Saved.</p>
+                        </Transition>
                     )}
                 </div>
             </form>
