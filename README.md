@@ -1,7 +1,12 @@
 # Laravel Breeze - Next.js Edition with TypeScript 🏝️
 ## Introduction
 
+---
 **This repository is a refactor of [breeze-next](https://github.com/laravel/breeze-next) by changing programing language from [JavaScript](https://www.javascript.com/) to [TypeScript](https://www.typescriptlang.org/)**
+
+**[Laravel Breeze modifications for profile editing](BREEZE_MODIFICATIONS.md)**
+
+---
 
 This repository is an implementation of the [Laravel Breeze](https://laravel.com/docs/starter-kits) application / authentication starter kit frontend in [Next.js](https://nextjs.org). All of the authentication boilerplate is already written for you - powered by [Laravel Sanctum](https://laravel.com/docs/sanctum), allowing you to quickly begin pairing your beautiful Next.js frontend with a powerful Laravel backend.
 

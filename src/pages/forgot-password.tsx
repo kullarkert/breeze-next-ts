@@ -1,6 +1,5 @@
 import AuthCard from '@/components/AuthCard'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
-import Button from '@/components/Button'
 import GuestLayout from '@/components/Layouts/GuestLayout'
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
@@ -8,6 +7,7 @@ import Label from '@/components/Label'
 import { useAuth } from '@/hooks/auth'
 import { useState, FormEventHandler } from 'react'
 import Head from 'next/head'
+import PrimaryButton from '@/components/PrimaryButton'
 
 const ForgotPassword = () => {
     const { forgotPassword } = useAuth({ middleware: 'guest' })
@@ -56,7 +56,7 @@ const ForgotPassword = () => {
                     </div>
 
                     <div className="flex items-center justify-end mt-4">
-                        <Button>Email Password Reset Link</Button>
+                        <PrimaryButton>Email Password Reset Link</PrimaryButton>
                     </div>
                 </form>
             </AuthCard>

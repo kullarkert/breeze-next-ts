@@ -1,6 +1,5 @@
 import AuthCard from '@/components/AuthCard'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
-import Button from '@/components/Button'
 import GuestLayout from '@/components/Layouts/GuestLayout'
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
@@ -11,6 +10,7 @@ import { useEffect, useState, FormEventHandler } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Checkbox from '@/components/Checkbox'
+import PrimaryButton from '@/components/PrimaryButton'
 
 const Login = () => {
     const { query } = useRouter()
@@ -68,7 +68,7 @@ const Login = () => {
                             className="block mt-1 w-full"
                             onChange={event => setEmail(event.target.value)}
                             required
-                            autoFocus
+                            isFocused={true}
                         />
 
                         <InputError messages={errors.email} className="mt-2" />
@@ -88,10 +88,7 @@ const Login = () => {
                             autoComplete="current-password"
                         />
 
-                        <InputError
-                            messages={errors.password}
-                            className="mt-2"
-                        />
+                        <InputError messages={errors.password} className="mt-2" />
                     </div>
 
                     {/* Remember Me */}
@@ -121,7 +118,7 @@ const Login = () => {
                             Forgot your password?
                         </Link>
 
-                        <Button className="ml-4">Login</Button>
+                        <PrimaryButton className="ml-4">Login</PrimaryButton>
                     </div>
                 </form>
             </AuthCard>

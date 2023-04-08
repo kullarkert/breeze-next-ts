@@ -1,7 +1,7 @@
 import AuthCard from '@/components/AuthCard'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
-import Button from '@/components/Button'
 import GuestLayout from '@/components/Layouts/GuestLayout'
+import PrimaryButton from '@/components/PrimaryButton'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
 
@@ -29,13 +29,13 @@ const VerifyEmail = () => {
                 )}
 
                 <div className="mt-4 flex items-center justify-between">
-                    <Button
+                    <PrimaryButton
                         onClick={() => resendEmailVerification({
                             setStatus,
                             setErrors: () => { }
                         })}>
                         Resend Verification Email
-                    </Button>
+                    </PrimaryButton>
 
                     <button
                         type="button"

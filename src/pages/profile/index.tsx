@@ -1,8 +1,8 @@
 import AppLayout from '@/components/Layouts/AppLayout'
 import Head from 'next/head'
-import UpdateProfileInformationForm from './UpdateProfileInformationForm'
-import DeleteUserForm from './DeleteUserForm'
-import UpdatePasswordForm from './UpdatePasswordForm'
+import UpdateProfileInformationForm from './partials/UpdateProfileInformationForm'
+import DeleteUserForm from './partials/DeleteUserForm'
+import UpdatePasswordForm from './partials/UpdatePasswordForm'
 
 const Profile = () => {
     return (

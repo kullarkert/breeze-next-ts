@@ -2,14 +2,13 @@ import { useState, FormEventHandler, useEffect } from 'react'
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
-import Button from '@/components/Button'
-
 import axios, { csrf } from '@/lib/axios'
 import { useAuth } from '@/hooks/auth'
 import { Transition } from '@headlessui/react'
+import PrimaryButton from '@/components/PrimaryButton'
 
 const UpdateProfileInformationForm = () => {
-    const { user } = useAuth({ middleware: 'auth' })
+    const { user, resendEmailVerification } = useAuth({ middleware: 'auth' })
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -37,7 +36,7 @@ const UpdateProfileInformationForm = () => {
             .catch(error => {
                 if (error.response.status !== 422) throw error
 
-                setErrors(Object.values(error.response.data.errors).flat() as never[])
+                setErrors(error.response.data.errors)
             })
     }
 
@@ -86,10 +85,32 @@ const UpdateProfileInformationForm = () => {
                     <InputError messages={errors.email} className="mt-2" />
                 </div>
 
-                {/* TODO add email verification link */}
+                {user?.must_verify_email && user?.email_verified_at === null && (
+                    <div>
+                        <p className="text-sm mt-2 text-gray-800 dark:text-gray-200">
+                            Your email address is unverified.
+
+                            <button
+                                className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                                onClick={() => resendEmailVerification({
+                                    setStatus,
+                                    setErrors: () => { }
+                                })}
+                            >
+                                Click here to re-send the verification email.
+                            </button>
+                        </p>
+
+                        {status === 'verification-link-sent' && (
+                            <div className="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
+                                A new verification link has been sent to your email address.
+                            </div>
+                        )}
+                    </div>
+                )}
 
                 <div className="flex items-center gap-4">
-                    <Button>Save</Button>
+                    <PrimaryButton>Save</PrimaryButton>
 
                     {status === 'profile-updated' && (
                         <Transition

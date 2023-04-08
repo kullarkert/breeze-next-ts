@@ -31,10 +31,10 @@ const Dropdown = ({
     }
 
 
-    let widthClasses = '';
+    let widthClasses = ''
 
     if (width === '48') {
-        widthClasses = 'w-48';
+        widthClasses = 'w-48'
     }
 
     const [open, setOpen] = useState(false)

@@ -21,6 +21,7 @@ export interface User {
     name?: string
     email?: string
     email_verified_at?: string
+    must_verify_email?: boolean // this is custom attribute
     created_at?: string
     updated_at?: string
 }
@@ -52,8 +53,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: IUseAuth) => {
             .catch(error => {
                 if (error.response.status !== 422) throw error
 
-                // setErrors(error.response.data.errors)
-                setErrors(Object.values(error.response.data.errors).flat() as never[])
+                setErrors(error.response.data.errors)
             })
     }
 
@@ -70,9 +70,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: IUseAuth) => {
             .then(() => mutate())
             .catch(error => {
                 if (error.response.status !== 422) throw error
-
-                // setErrors(error.response.data.errors)
-                setErrors(Object.values(error.response.data.errors).flat() as never[])
+                setErrors(error.response.data.errors)
             })
     }
 
@@ -89,8 +87,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: IUseAuth) => {
             .catch(error => {
                 if (error.response.status !== 422) throw error
 
-                // setErrors(error.response.data.errors)
-                setErrors(Object.values(error.response.data.errors).flat() as never[])
+                setErrors(error.response.data.errors)
             })
     }
 
@@ -109,8 +106,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: IUseAuth) => {
             .catch(error => {
                 if (error.response.status !== 422) throw error
 
-                // setErrors(error.response.data.errors)
-                setErrors(Object.values(error.response.data.errors).flat() as never[])
+                setErrors(error.response.data.errors)
             })
     }
 

@@ -8,6 +8,7 @@ import Label from '@/components/Label'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState, FormEventHandler } from 'react'
 import { useRouter } from 'next/router'
+import PrimaryButton from '@/components/PrimaryButton'
 
 const PasswordReset = () => {
     const { query } = useRouter()
@@ -74,10 +75,7 @@ const PasswordReset = () => {
                             required
                         />
 
-                        <InputError
-                            messages={errors.password}
-                            className="mt-2"
-                        />
+                        <InputError messages={errors.password} className="mt-2" />
                     </div>
 
                     {/* Confirm Password */}
@@ -97,14 +95,11 @@ const PasswordReset = () => {
                             required
                         />
 
-                        <InputError
-                            messages={errors.password_confirmation}
-                            className="mt-2"
-                        />
+                        <InputError messages={errors.password_confirmation} className="mt-2" />
                     </div>
 
                     <div className="flex items-center justify-end mt-4">
-                        <Button>Reset Password</Button>
+                        <PrimaryButton>Reset Password</PrimaryButton>
                     </div>
                 </form>
             </AuthCard>

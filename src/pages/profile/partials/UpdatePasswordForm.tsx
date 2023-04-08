@@ -1,11 +1,11 @@
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
-import Button from '@/components/Button'
 import { Transition } from '@headlessui/react'
 
 import { FormEventHandler, useState } from 'react'
 import axios, { csrf } from '@/lib/axios'
+import PrimaryButton from '@/components/PrimaryButton'
 
 const UpdatePasswordForm = () => {
     const [currentPassword, setCurrentPassword] = useState('')
@@ -29,7 +29,7 @@ const UpdatePasswordForm = () => {
             .catch(error => {
                 if (error.response.status !== 422) throw error
 
-                setErrors(Object.values(error.response.data.errors).flat() as never[])
+                setErrors(error.response.data.errors)
             })
     }
 
@@ -58,10 +58,7 @@ const UpdatePasswordForm = () => {
                         autoComplete="current_password"
                     />
 
-                    <InputError
-                        messages={errors.current_password}
-                        className="mt-2"
-                    />
+                    <InputError messages={errors.current_password} className="mt-2" />
                 </div>
 
                 <div>
@@ -75,10 +72,7 @@ const UpdatePasswordForm = () => {
                         autoComplete="new_password"
                     />
 
-                    <InputError
-                        messages={errors.password}
-                        className="mt-2"
-                    />
+                    <InputError messages={errors.password} className="mt-2" />
                 </div>
                 <div>
                     <Label htmlFor="password_confirmation">Confirm Password</Label>
@@ -91,19 +85,21 @@ const UpdatePasswordForm = () => {
                         autoComplete="password_confirmation"
                     />
 
-                    <InputError
-                        messages={errors.password_confirmation}
-                        className="mt-2"
-                    />
+                    <InputError messages={errors.password_confirmation} className="mt-2" />
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <Button>Save</Button>
+                    <PrimaryButton>Save</PrimaryButton>
 
                     {status === 'password-updated' && (
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Saved
-                        </p>
+                        <Transition
+                            show={true}
+                            enterFrom="opacity-0"
+                            leaveTo="opacity-0"
+                            className="transition ease-in-out"
+                        >
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Saved.</p>
+                        </Transition>
                     )}
                 </div>
             </form>
