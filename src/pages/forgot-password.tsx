@@ -10,7 +10,10 @@ import Head from 'next/head'
 import PrimaryButton from '@/components/PrimaryButton'
 
 const ForgotPassword = () => {
-    const { forgotPassword } = useAuth({ middleware: 'guest' })
+    const { forgotPassword } = useAuth({
+        middleware: 'guest',
+        redirectIfAuthenticated: '/dashboard',
+    })
 
     const [email, setEmail] = useState('')
     const [errors, setErrors] = useState([])
